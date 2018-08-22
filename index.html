@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="apple-mobile-web-app-capable">
+		<title>scene6</title>
+		<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+		<!-- <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.12.4/dist/aframe-extras.min.js"></script> -->
+		<script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.1.0/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.js"></script>
+  	<script src="https://unpkg.com/aframe-animation-component@4.0.0-beta8/dist/aframe-animation-component.min.js"></script>
+  	 <script src="https://unpkg.com/aframe-aabb-collider-component/dist/aframe-aabb-collider-component.min.js"></script>
+	  <script src="js/aabb-collider.js"></script>
+	  <script src="js/aframe-meshline-component.min.js"></script>
+	  <script src="js/grab-saber.js"></script>
+	  <script src="js/light-saber.js"></script>
+	  <script src="js/rotate-toward-velocity.js"></script>
+	  <script src="js/virus-city.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript" src="js/scenes/scene6.js"></script>
+		<a-scene virus-shooting>
+			<a-assets>
+				<a-asset-item id="small-virus-obj" src="model/virus/virus.obj" preload="auto"></a-asset-item>
+	      <a-asset-item id="small-virus-mtl" src="model/virus/virus.mtl" preload="auto"></a-asset-item>
+	      <a-asset-item id="medium-virus-obj" src="model/virus2/virus.obj" preload="auto"></a-asset-item>
+	      <a-asset-item id="medium-virus-mtl" src="model/virus2/virus.mtl" preload="auto"></a-asset-item>
+	      <a-asset-item id="boss-virus-obj" src="model/virus3.DAE" preload="auto"></a-asset-item>
+	      <img id="hurtImg" src="img/damage.png" crossOrigin="anonymous">
+			</a-assets>
+	
+	
+			<a-entity virus-city position="0 0 0"></a-entity>
+
+			<a-sky src="bg/s6.jpg"></a-sky>
+				
+			<!-- <a-entity obj-model="mtl:model/virus2/1409 Virus.mtl;obj:model/virus2/1409 Virus.obj" position="3.638 2.464 0" scale="0.053 0.053 0.053"></a-entity>
+
+			<a-collada-model id="v1" src="model/virus/virus.dae" position="1.668 1.063 0" scale="0.521 0.521 0.521" collada-model="model/virus/virus.dae"></a-collada-model>
+			<a-collada-model id="v3" src="model/virus3.dae" position="-1.311 1.614 0" scale="0.548 0.548 0.548" collada-model="model/virus3.dae"></a-collada-model> -->
+			<!-- <a-entity position="0 1.6 0"> -->
+			<a-camera  camera="userHeight: 1.6" look-controls>
+				<a-cursor></a-cursor>
+					<!-- <a-text id="scoreboard"  position="1.5 1.5 -2.500" text="color:yellow;align:center" value="Energy Left">
+						<a-text id="energybar" position="-0.007 -0.298 0" text="align:center;color:red"></a-text>
+					</a-text> -->
+					<a-text id="enemiesboard"  position="-1.5 1.5 -2.500" text="color:yellow;align:center" value="Enemies killed">
+						<a-text id="killedbar" position="-0.007 -0.298 0" text="align:center;color:red" value="0"></a-text>
+					</a-text>
+					<a-text id="gameover" visible="false" position="0 0 -1.500" text="color:red;align:center;height:3; width: 5;"></a-text>
+					<a-entity id="hurt"
+	          proxy_event="event: player-hit; dst:#hurt"
+	          geometry="primitive:sphere;radius:0.5;segmentsHeight:6;segmentsWidth:7"
+	          position="0 0 -0.2"
+	          rotation="0 90 0"
+	          material="shader: flat; side: back; transparent: true; opacity: 0; depthTest: false; src: #hurtImg">
+	          <a-animation id="player-hit-anim" attribute="material.opacity" to="1" from="0" begin="player-hit" direction="alternate" dur="200" repeat="1"></a-animation>
+	        </a-entity>
+				</a-camera>
+				<a-entity position="1.847 2.5 -1.92">
+	        	<a-entity id="redSaber" geometry="" material="color:red" position="0 0.3 0.08" scale="1 0.2 0"></a-entity>
+	        	<a-entity id="yellowSaber" geometry="" material="color:yellow" position="0 0.0 0.08" scale="1 0.2 0"></a-entity>
+	        	<a-entity id="blueSaber" geometry="" material="color:blue" position="0 -0.3 0.08" scale="1 0.2 0"></a-entity>
+	        </a-entity>
+			<!-- </a-entity> -->
+			<!-- <a-collada-model id="v3" src="model/virus3.dae" position="-1.311 1.614 0" scale="0.548 0.548 0.548" collada-model="model/virus3.dae"></a-collada-model> -->
+			<!-- <a-gltf-model src="model/handle/scene.gltf" position="0.616 0 -2.004" scale="0.027 0.027 0.027" gltf-model="model/handle/scene.gltf"></a-gltf-model> -->
+			
+			
+		</a-scene>
+	</body>
+</html>
